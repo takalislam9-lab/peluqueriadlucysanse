@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D'Lucy | Peluquería de Mujeres en San Sebastián de los Reyes</title>
+<meta name="description" content="D'Lucy, peluquería de mujeres en San Sebastián de los Reyes. Corte, color, tratamientos capilares y peinados de evento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--honey:#E8971E; --honey-dark:#C97A0C; --cream:#FFF8EF; --white:#FFFFFF; --ink:#3A2A16; --muted:#8A6F52;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;font-weight:300;}
+  a{text-decoration:none;color:inherit;}
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;}
+  img{max-width:100%;display:block;}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:22px 6%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);transition:box-shadow .3s;}
+  header.scrolled{box-shadow:0 2px 20px rgba(58,42,22,.08);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--ink);}
+  .logo span{color:var(--honey);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:30px;}
+  nav a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;}
+  .nav-toggle{display:none;font-size:1.6rem;background:none;border:none;color:var(--ink);}
+
+  .hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:170px 7% 80px;background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);position:relative;}
+  .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,151,30,.14) 0%,transparent 70%);z-index:0;}
+  .hero-content{position:relative;z-index:1;max-width:760px;}
+  .eyebrow{color:var(--honey-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;font-weight:500;}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.15;margin:20px 0 22px;color:var(--ink);}
+  .hero h1 em{color:var(--honey);font-style:italic;}
+  .hero p{font-size:1.05rem;color:var(--muted);max-width:520px;margin:0 auto 36px;line-height:1.8;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-solid{background:var(--honey);color:#fff;padding:15px 34px;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:40px;transition:transform .25s,background .25s;}
+  .btn-solid:hover{background:var(--honey-dark);transform:translateY(-2px);}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);padding:15px 34px;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:40px;}
+
+  section{padding:100px 7%;}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 54px;}
+  .section-head .eyebrow{display:block;margin-bottom:12px;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.6rem);color:var(--ink);}
+  .section-head p{margin-top:16px;color:var(--muted);line-height:1.8;}
+
+  .services-wrap{background:var(--cream);}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1150px;margin:0 auto;}
+  .svc-card{background:#fff;padding:38px 32px;border-radius:18px;box-shadow:0 10px 30px rgba(58,42,22,.06);transition:transform .25s;}
+  .svc-card:hover{transform:translateY(-6px);}
+  .svc-icon{width:52px;height:52px;border-radius:50%;background:rgba(232,151,30,.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+  .svc-icon svg{width:24px;height:24px;stroke:var(--honey-dark);}
+  .svc-card h3{font-size:1.25rem;color:var(--ink);margin-bottom:10px;}
+  .svc-card p{font-size:.9rem;color:var(--muted);line-height:1.7;}
+
+  .gallery{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .gallery figure{overflow:hidden;border-radius:18px;margin:0;height:420px;}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .gallery figure:hover img{transform:scale(1.05);}
+
+  .why-wrap{background:var(--ink);color:#fff;}
+  .why-wrap .section-head h2{color:#fff;}
+  .why-wrap .section-head p{color:#d9c7ae;}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:36px;max-width:1150px;margin:0 auto;}
+  .why-card h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:1px;font-family:'Jost',sans-serif;font-weight:500;color:var(--honey);margin-bottom:12px;}
+  .why-card p{font-size:.9rem;color:#e8dcc8;line-height:1.7;}
+
+  .cta-section{text-align:center;background:var(--cream);}
+  .cta-section h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--ink);margin:14px 0 30px;}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  .contact-section{background:#fff;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:46px;max-width:1150px;margin:0 auto;}
+  .contact-info{display:flex;flex-direction:column;gap:26px;}
+  .contact-block h3{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--honey-dark);font-weight:500;margin-bottom:8px;}
+  .contact-block p{font-size:.95rem;color:var(--ink);line-height:1.7;}
+  .contact-map{border-radius:18px;overflow:hidden;min-height:340px;box-shadow:0 10px 30px rgba(58,42,22,.1);}
+  .contact-map iframe{display:block;}
+
+  footer{background:var(--ink);color:#d9c7ae;padding:40px 7%;text-align:center;font-size:.8rem;}
+
+  .wa-fab{position:fixed;bottom:26px;right:26px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);}
+
+  @media(max-width:900px){
+    .gallery{grid-template-columns:1fr;}
+    .gallery figure{height:300px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-map{min-height:280px;}
+    nav{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:300px;background:#fff;flex-direction:column;padding:110px 40px;transform:translateX(100%);transition:transform .4s;box-shadow:-10px 0 40px rgba(0,0,0,.1);}
+    nav.open{transform:translateX(0);}
+    nav ul{flex-direction:column;gap:26px;}
+    .nav-toggle{display:block;}
+    section{padding:70px 6%;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a href="#inicio" class="logo">D<span>'</span>Lucy</a>
+  <nav id="nav">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Espacio</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle">☰</button>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <span class="eyebrow">Peluquería de Mujeres · San Sebastián de los Reyes</span>
+    <h1>Tu mejor versión<br>empieza con un <em>buen corte</em></h1>
+    <p>En D'Lucy cuidamos cada detalle de tu pelo: corte, color, tratamientos y peinados pensados para que salgas sintiéndote increíble.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Reservar cita →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+</section>
+
+<section class="services-wrap" id="servicios">
+  <div class="section-head">
+    <span class="eyebrow">Qué hacemos</span>
+    <h2>Nuestros servicios</h2>
+    <p>Tratamientos pensados para cada tipo de pelo y cada ocasión.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M6 3c0 4 4 4 4 8s-4 4-4 8"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+      <h3>Corte y Peinado</h3>
+      <p>Cortes a medida y peinados que realzan tu estilo natural.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <h3>Color y Mechas</h3>
+      <p>Coloración, balayage y mechas con productos de calidad.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M4.93 4.93l2.83 2.83M2 12h4M4.93 19.07l2.83-2.83M12 18v4M16.24 16.24l2.83 2.83M18 12h4M16.24 7.76l2.83-2.83"/></svg></div>
+      <h3>Tratamientos Capilares</h3>
+      <p>Hidratación y reparación profunda para un pelo sano y brillante.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 6-6 9-6s6 2 9 6c-3 4-6 6-9 6s-6-2-9-6z"/><path d="M3 12h18"/></svg></div>
+      <h3>Alisado y Keratina</h3>
+      <p>Alisados duraderos que dejan el pelo liso, suave y manejable.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/></svg></div>
+      <h3>Peinados de Evento</h3>
+      <p>Recogidos y peinados especiales para bodas, bautizos y fiestas.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V9a5 5 0 0 1 10 0v12"/><path d="M4 21h16"/></svg></div>
+      <h3>Extensiones</h3>
+      <p>Más largo y volumen con extensiones de pelo de calidad.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="section-head">
+    <span class="eyebrow">Nuestro trabajo</span>
+    <h2>Resultados que enamoran</h2>
+    <p>Cada cliente sale de D'Lucy con un pelo renovado.</p>
+  </div>
+  <div class="gallery">
+    <figure><img src="dlucy1.jpg" alt="Peinado realizado en D'Lucy"></figure>
+    <figure><img src="dlucy2.jpg" alt="Color de pelo realizado en D'Lucy"></figure>
+  </div>
+</section>
+
+<section class="why-wrap">
+  <div class="section-head">
+    <span class="eyebrow">Por qué elegirnos</span>
+    <h2>Cuidamos cada detalle</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>Trato cercano</h3>
+      <p>Te escuchamos para darte el resultado que de verdad buscas.</p>
+    </div>
+    <div class="why-card">
+      <h3>Productos de calidad</h3>
+      <p>Trabajamos con marcas profesionales que cuidan tu pelo.</p>
+    </div>
+    <div class="why-card">
+      <h3>Ambiente acogedor</h3>
+      <p>Un espacio pensado para que disfrutes de tu momento.</p>
+    </div>
+    <div class="why-card">
+      <h3>En Sanse</h3>
+      <p>Fácil acceso, sin necesidad de desplazarte al centro de Madrid.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <span class="eyebrow" style="color:var(--honey-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;">Reserva</span>
+  <h2>¿Lista para tu cambio de look?</h2>
+  <div class="cta-row">
+    <a href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+  </div>
+</section>
+
+<section class="contact-section" id="contacto">
+  <div class="section-head">
+    <span class="eyebrow">Visítanos</span>
+    <h2>Dónde encontrarnos</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-block">
+        <h3>Dirección</h3>
+        <p>C. del Sacramento, 8<br>San Sebastián de los Reyes, Madrid</p>
+      </div>
+      <div class="contact-block">
+        <h3>Teléfono / WhatsApp</h3>
+        <p>641 11 97 09</p>
+      </div>
+      <div class="contact-block">
+        <h3>Horario</h3>
+        <p>Consultar disponibilidad por WhatsApp</p>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps?q=C.+del+Sacramento+8+San+Sebastian+de+los+Reyes+Madrid&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 D'Lucy — Peluquería de Mujeres</p>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.702 4.605 1.912 6.472L4 29l7.727-1.878A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.98-1.363l-.357-.212-4.583 1.114 1.15-4.47-.232-.367a9.8 9.8 0 0 1-1.5-5.219c0-5.421 4.412-9.833 9.833-9.833s9.833 4.412 9.833 9.833-4.412 9.833-9.833 9.833zm5.38-7.36c-.294-.148-1.741-.859-2.011-.957-.27-.098-.467-.148-.663.148-.196.294-.76.957-.932 1.153-.172.196-.343.221-.637.074-.294-.148-1.242-.458-2.366-1.462-.874-.78-1.464-1.744-1.636-2.038-.172-.294-.018-.453.13-.6.133-.133.294-.343.441-.515.147-.172.196-.294.294-.49.098-.196.049-.368-.025-.515-.074-.148-.663-1.6-.909-2.19-.24-.575-.484-.497-.663-.506l-.564-.01c-.196 0-.515.074-.784.368-.27.294-1.03 1.007-1.03 2.456s1.055 2.85 1.202 3.046c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.619.706.225 1.348.193 1.855.117.566-.085 1.741-.712 1.987-1.4.245-.688.245-1.278.172-1.4-.074-.123-.27-.196-.564-.344z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+
+</body>
+</html>
