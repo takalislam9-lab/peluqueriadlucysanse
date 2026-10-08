@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D'Lucy | Peluquería de Mujeres en San Sebastián de los Reyes</title>
-<meta name="description" content="D'Lucy, peluquería de mujeres en San Sebastián de los Reyes. Corte, color, tratamientos capilares y peinados de evento.">
+<title>D'Lucy | Peluquería de Mujer y Hombre en San Sebastián de los Reyes</title>
+<meta name="description" content="D'Lucy, peluquería de mujer y barbería de hombre en San Sebastián de los Reyes. Corte, color, tratamientos, peinados de evento, barba y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -24,9 +24,13 @@
   nav a{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;}
   .nav-toggle{display:none;font-size:1.6rem;background:none;border:none;color:var(--ink);}
 
-  .hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:170px 7% 80px;background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);position:relative;}
-  .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,151,30,.14) 0%,transparent 70%);z-index:0;}
-  .hero-content{position:relative;z-index:1;max-width:760px;}
+  .hero{min-height:92vh;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:150px 7% 80px;background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);position:relative;}
+  .hero::before{content:'';position:absolute;top:0;left:30%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,151,30,.14) 0%,transparent 70%);z-index:0;}
+  .hero-content{position:relative;z-index:1;max-width:620px;}
+  .hero-content p{margin-left:0;}
+  .hero-content .hero-ctas{justify-content:flex-start;}
+  .hero-photo{position:relative;z-index:1;margin:0;border-radius:24px;overflow:hidden;height:min(560px,68vh);box-shadow:0 24px 50px rgba(58,42,22,.18);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
   .eyebrow{color:var(--honey-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;font-weight:500;}
   .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.15;margin:20px 0 22px;color:var(--ink);}
   .hero h1 em{color:var(--honey);font-style:italic;}
@@ -51,7 +55,20 @@
   .svc-card h3{font-size:1.25rem;color:var(--ink);margin-bottom:10px;}
   .svc-card p{font-size:.9rem;color:var(--muted);line-height:1.7;}
 
-  .gallery{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .men-wrap{background:#fff;}
+  .men-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px 28px;max-width:1150px;margin:0 auto;}
+  .men-list li{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 24px;background:var(--cream);border-radius:14px;border-left:3px solid var(--honey);}
+  .men-list h3{font-size:1.05rem;color:var(--ink);}
+  .men-list p{font-size:.85rem;color:var(--muted);line-height:1.6;margin-top:4px;}
+  .men-list .dur{flex-shrink:0;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--honey-dark);font-weight:500;white-space:nowrap;padding-top:3px;}
+  .men-note{text-align:center;margin-top:36px;color:var(--muted);font-size:.9rem;}
+  .men-note a{color:var(--honey-dark);font-weight:500;}
+
+  .results{max-width:1150px;margin:54px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .results figure{overflow:hidden;border-radius:18px;margin:0;height:360px;}
+  .results img{width:100%;height:100%;object-fit:cover;}
+
+  .gallery{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .gallery figure{overflow:hidden;border-radius:18px;margin:0;height:420px;}
   .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
   .gallery figure:hover img{transform:scale(1.05);}
@@ -80,8 +97,16 @@
   .wa-fab{position:fixed;bottom:26px;right:26px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);}
 
   @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:120px;text-align:center;}
+    .hero-content{margin:0 auto;}
+    .hero-content p{margin:0 auto 36px;}
+    .hero-content .hero-ctas{justify-content:center;}
+    .hero-photo{height:380px;}
+    .men-list{grid-template-columns:1fr;}
+    .results{grid-template-columns:1fr;}
+    .results figure{height:300px;}
     .gallery{grid-template-columns:1fr;}
-    .gallery figure{height:300px;}
+    .gallery figure{height:420px;}
     .contact-grid{grid-template-columns:1fr;}
     .contact-map{min-height:280px;}
     nav{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:300px;background:#fff;flex-direction:column;padding:110px 40px;transform:translateX(100%);transition:transform .4s;box-shadow:-10px 0 40px rgba(0,0,0,.1);}
@@ -99,8 +124,9 @@
   <nav id="nav">
     <ul>
       <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#galeria">Espacio</a></li>
+      <li><a href="#mujer">Mujer</a></li>
+      <li><a href="#hombre">Hombre</a></li>
+      <li><a href="#galeria">El local</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -109,20 +135,22 @@
 
 <section class="hero" id="inicio">
   <div class="hero-content">
-    <span class="eyebrow">Peluquería de Mujeres · San Sebastián de los Reyes</span>
+    <span class="eyebrow">Peluquería Mujer y Hombre · San Sebastián de los Reyes</span>
     <h1>Tu mejor versión<br>empieza con un <em>buen corte</em></h1>
-    <p>En D'Lucy cuidamos cada detalle de tu pelo: corte, color, tratamientos y peinados pensados para que salgas sintiéndote increíble.</p>
+    <p>En D'Lucy cuidamos cada detalle de tu pelo: corte, color, tratamientos, peinados y barbería pensados para que salgas sintiéndote increíble.</p>
     <div class="hero-ctas">
-      <a href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Reservar cita →</a>
-      <a href="#servicios" class="btn-outline">Ver servicios</a>
+      <a href="https://wa.me/34600602201?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Reservar cita →</a>
+      <a href="#mujer" class="btn-outline">Mujer</a>
+      <a href="#hombre" class="btn-outline">Hombre</a>
     </div>
   </div>
+  <figure class="hero-photo"><img src="fachada.jpg" alt="Fachada de la peluquería D'Lucy en San Sebastián de los Reyes"></figure>
 </section>
 
-<section class="services-wrap" id="servicios">
+<section class="services-wrap" id="mujer">
   <div class="section-head">
-    <span class="eyebrow">Qué hacemos</span>
-    <h2>Nuestros servicios</h2>
+    <span class="eyebrow">Mujer</span>
+    <h2>Servicios de mujer</h2>
     <p>Tratamientos pensados para cada tipo de pelo y cada ocasión.</p>
   </div>
   <div class="services-grid">
@@ -157,17 +185,52 @@
       <p>Más largo y volumen con extensiones de pelo de calidad.</p>
     </div>
   </div>
-</section>
-
-<section id="galeria">
-  <div class="section-head">
-    <span class="eyebrow">Nuestro trabajo</span>
-    <h2>Resultados que enamoran</h2>
-    <p>Cada cliente sale de D'Lucy con un pelo renovado.</p>
-  </div>
-  <div class="gallery">
+  <div class="results">
     <figure><img src="dlucy1.jpg" alt="Peinado realizado en D'Lucy"></figure>
     <figure><img src="dlucy2.jpg" alt="Color de pelo realizado en D'Lucy"></figure>
+  </div>
+</section>
+
+<section class="men-wrap" id="hombre">
+  <div class="section-head">
+    <span class="eyebrow">Hombre</span>
+    <h2>Barbería</h2>
+    <p>Cortes, barba y cuidado masculino con acabado profesional.</p>
+  </div>
+  <ul class="men-list">
+    <li><div><h3>Corte caballero</h3></div><span class="dur">45 min</span></li>
+    <li><div><h3>Corte + barba</h3></div><span class="dur">55 min</span></li>
+    <li><div><h3>Corte clásico</h3><p>Corte clásico de caballero sin degradado</p></div><span class="dur">30 min</span></li>
+    <li><div><h3>Corte + mascarilla</h3></div><span class="dur">45 min</span></li>
+    <li><div><h3>Corte niño</h3></div><span class="dur">30 min</span></li>
+    <li><div><h3>Jubilados</h3><p>Corte de jubilado</p></div><span class="dur">30 min</span></li>
+    <li><div><h3>Recorte de barba</h3></div><span class="dur">15 min</span></li>
+    <li><div><h3>Corte + barba + mascarilla</h3></div><span class="dur">1 h</span></li>
+    <li><div><h3>Corte + barba + cejas</h3></div><span class="dur">50 min</span></li>
+    <li><div><h3>Bono 4 cortes</h3><p>Bono 4 cortes sin barba. A consumir en el mismo mes</p></div><span class="dur">30 min</span></li>
+    <li><div><h3>Bono 4 cortes + barba</h3><p>Bono 4 cortes + barba a consumir en el mismo mes</p></div><span class="dur">55 min</span></li>
+    <li><div><h3>Corte con diseño</h3></div><span class="dur">40 min</span></li>
+    <li><div><h3>Corte + mascarilla facial</h3></div><span class="dur">50 min</span></li>
+    <li><div><h3>Limpieza facial</h3><p>Limpieza facial con vapor, cremas de exfoliación, mascarilla negra y crema hidratante</p></div><span class="dur">1 h 30 min</span></li>
+    <li><div><h3>Cejas con cuchilla</h3></div><span class="dur">5 min</span></li>
+    <li><div><h3>Tinte de pelo</h3><p>Para este servicio es preferible contactarnos y tener todos los detalles con tiempo</p></div><span class="dur">2 h 30 min</span></li>
+    <li><div><h3>Permanente</h3><p>Preferible contactarnos para ver la longitud de tu pelo y la pronunciación del rizo que deseas</p></div><span class="dur">2 h</span></li>
+    <li><div><h3>Barba con ritual</h3></div><span class="dur">20 min</span></li>
+    <li><div><h3>Mechas para chico</h3><p>Preferible contactarnos para tener claros todos los detalles</p></div><span class="dur">2 h</span></li>
+  </ul>
+  <p class="men-note">Consulta precios y disponibilidad por <a href="https://wa.me/34600602201?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20hombre%20en%20D%27Lucy" target="_blank" rel="noopener">WhatsApp</a>.</p>
+</section>
+
+<section class="services-wrap" id="galeria">
+  <div class="section-head">
+    <span class="eyebrow">El local</span>
+    <h2>Nuestro espacio</h2>
+    <p>Un salón luminoso y acogedor en pleno Sanse.</p>
+  </div>
+  <div class="gallery">
+    <figure><img src="local1.jpg" alt="Zona de lavado y tocadores de D'Lucy" loading="lazy"></figure>
+    <figure><img src="local2.jpg" alt="Zona de manicura de D'Lucy" loading="lazy"></figure>
+    <figure><img src="local3.jpg" alt="Zona de espera de D'Lucy" loading="lazy"></figure>
   </div>
 </section>
 
@@ -198,9 +261,9 @@
 
 <section class="cta-section">
   <span class="eyebrow" style="color:var(--honey-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;">Reserva</span>
-  <h2>¿Lista para tu cambio de look?</h2>
+  <h2>¿Te apetece un cambio de look?</h2>
   <div class="cta-row">
-    <a href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    <a href="https://wa.me/34600602201?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" class="btn-solid" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
   </div>
 </section>
 
@@ -217,7 +280,7 @@
       </div>
       <div class="contact-block">
         <h3>Teléfono / WhatsApp</h3>
-        <p>641 11 97 09</p>
+        <p><a href="tel:+34600602201">600 60 22 01</a></p>
       </div>
       <div class="contact-block">
         <h3>Horario</h3>
@@ -231,10 +294,10 @@
 </section>
 
 <footer>
-  <p>© 2026 D'Lucy — Peluquería de Mujeres</p>
+  <p>© 2026 D'Lucy — Peluquería de Mujer y Hombre</p>
 </footer>
 
-<a class="wa-fab" href="https://wa.me/34641119709?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wa-fab" href="https://wa.me/34600602201?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20D%27Lucy" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.702 4.605 1.912 6.472L4 29l7.727-1.878A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.98-1.363l-.357-.212-4.583 1.114 1.15-4.47-.232-.367a9.8 9.8 0 0 1-1.5-5.219c0-5.421 4.412-9.833 9.833-9.833s9.833 4.412 9.833 9.833-4.412 9.833-9.833 9.833zm5.38-7.36c-.294-.148-1.741-.859-2.011-.957-.27-.098-.467-.148-.663.148-.196.294-.76.957-.932 1.153-.172.196-.343.221-.637.074-.294-.148-1.242-.458-2.366-1.462-.874-.78-1.464-1.744-1.636-2.038-.172-.294-.018-.453.13-.6.133-.133.294-.343.441-.515.147-.172.196-.294.294-.49.098-.196.049-.368-.025-.515-.074-.148-.663-1.6-.909-2.19-.24-.575-.484-.497-.663-.506l-.564-.01c-.196 0-.515.074-.784.368-.27.294-1.03 1.007-1.03 2.456s1.055 2.85 1.202 3.046c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.619.706.225 1.348.193 1.855.117.566-.085 1.741-.712 1.987-1.4.245-.688.245-1.278.172-1.4-.074-.123-.27-.196-.564-.344z"/></svg>
 </a>
 
